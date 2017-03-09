@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28C81E421E706F9C008B487B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C81E411E706F9C008B487B /* AppDelegate.swift */; };
+		28C81E471E706F9C008B487B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E451E706F9C008B487B /* Main.storyboard */; };
+		28C81E491E706F9C008B487B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E481E706F9C008B487B /* Assets.xcassets */; };
+		28C81E4C1E706F9C008B487B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E4A1E706F9C008B487B /* LaunchScreen.storyboard */; };
+		28C81E541E707022008B487B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C81E531E707022008B487B /* Util.swift */; };
+		28C81E5A1E70935C008B487B /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C81E591E70935C008B487B /* SplashViewController.swift */; };
+		28C81E5B1E709DE0008B487B /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E561E708462008B487B /* Comfortaa-Bold.ttf */; };
+		28C81E5C1E709DE0008B487B /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E571E708462008B487B /* Comfortaa-Light.ttf */; };
+		28C81E5D1E709DE0008B487B /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E581E708462008B487B /* Comfortaa-Regular.ttf */; };
+		9738EEAEE2227926E47BBF32 /* Pods_Langua.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CE07AE2F73E6662E53D107 /* Pods_Langua.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		28C81E3E1E706F9C008B487B /* Langua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Langua.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28C81E411E706F9C008B487B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		28C81E461E706F9C008B487B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		28C81E481E706F9C008B487B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28C81E4B1E706F9C008B487B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		28C81E4D1E706F9C008B487B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28C81E531E707022008B487B /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		28C81E561E708462008B487B /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		28C81E571E708462008B487B /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
+		28C81E581E708462008B487B /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
+		28C81E591E70935C008B487B /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		5C92B32E935B2E5FC86444BC /* Pods-Langua.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langua.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Langua/Pods-Langua.debug.xcconfig"; sourceTree = "<group>"; };
+		669F5742311B25AF0D0FD500 /* Pods-Langua.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langua.release.xcconfig"; path = "Pods/Target Support Files/Pods-Langua/Pods-Langua.release.xcconfig"; sourceTree = "<group>"; };
+		84CE07AE2F73E6662E53D107 /* Pods_Langua.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Langua.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28C81E3B1E706F9C008B487B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9738EEAEE2227926E47BBF32 /* Pods_Langua.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0274712A0BBB4517CC035479 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C92B32E935B2E5FC86444BC /* Pods-Langua.debug.xcconfig */,
+				669F5742311B25AF0D0FD500 /* Pods-Langua.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		28C81E351E706F9C008B487B = {
+			isa = PBXGroup;
+			children = (
+				28C81E401E706F9C008B487B /* Langua */,
+				28C81E3F1E706F9C008B487B /* Products */,
+				0274712A0BBB4517CC035479 /* Pods */,
+				F8AAF71A5B0B2EC3F5CA63DF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		28C81E3F1E706F9C008B487B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28C81E3E1E706F9C008B487B /* Langua.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28C81E401E706F9C008B487B /* Langua */ = {
+			isa = PBXGroup;
+			children = (
+				28C81E411E706F9C008B487B /* AppDelegate.swift */,
+				28C81E591E70935C008B487B /* SplashViewController.swift */,
+				28C81E531E707022008B487B /* Util.swift */,
+				28C81E551E708455008B487B /* Fonts */,
+				28C81E451E706F9C008B487B /* Main.storyboard */,
+				28C81E481E706F9C008B487B /* Assets.xcassets */,
+				28C81E4A1E706F9C008B487B /* LaunchScreen.storyboard */,
+				28C81E4D1E706F9C008B487B /* Info.plist */,
+			);
+			path = Langua;
+			sourceTree = "<group>";
+		};
+		28C81E551E708455008B487B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				28C81E561E708462008B487B /* Comfortaa-Bold.ttf */,
+				28C81E571E708462008B487B /* Comfortaa-Light.ttf */,
+				28C81E581E708462008B487B /* Comfortaa-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		F8AAF71A5B0B2EC3F5CA63DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84CE07AE2F73E6662E53D107 /* Pods_Langua.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28C81E3D1E706F9C008B487B /* Langua */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28C81E501E706F9C008B487B /* Build configuration list for PBXNativeTarget "Langua" */;
+			buildPhases = (
+				2173674C515880B3FF388CEF /* [CP] Check Pods Manifest.lock */,
+				28C81E3A1E706F9C008B487B /* Sources */,
+				28C81E3B1E706F9C008B487B /* Frameworks */,
+				28C81E3C1E706F9C008B487B /* Resources */,
+				D2C4C5DB3D2DE83AD1CDF065 /* [CP] Embed Pods Frameworks */,
+				D89DC48D865BBA593C136C63 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Langua;
+			productName = Langua;
+			productReference = 28C81E3E1E706F9C008B487B /* Langua.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28C81E361E706F9C008B487B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Steven Hurtado";
+				TargetAttributes = {
+					28C81E3D1E706F9C008B487B = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = E55B666VZ8;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 28C81E391E706F9C008B487B /* Build configuration list for PBXProject "Langua" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28C81E351E706F9C008B487B;
+			productRefGroup = 28C81E3F1E706F9C008B487B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28C81E3D1E706F9C008B487B /* Langua */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28C81E3C1E706F9C008B487B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28C81E5B1E709DE0008B487B /* Comfortaa-Bold.ttf in Resources */,
+				28C81E5C1E709DE0008B487B /* Comfortaa-Light.ttf in Resources */,
+				28C81E5D1E709DE0008B487B /* Comfortaa-Regular.ttf in Resources */,
+				28C81E4C1E706F9C008B487B /* LaunchScreen.storyboard in Resources */,
+				28C81E491E706F9C008B487B /* Assets.xcassets in Resources */,
+				28C81E471E706F9C008B487B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2173674C515880B3FF388CEF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D2C4C5DB3D2DE83AD1CDF065 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Langua/Pods-Langua-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D89DC48D865BBA593C136C63 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Langua/Pods-Langua-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28C81E3A1E706F9C008B487B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28C81E541E707022008B487B /* Util.swift in Sources */,
+				28C81E421E706F9C008B487B /* AppDelegate.swift in Sources */,
+				28C81E5A1E70935C008B487B /* SplashViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		28C81E451E706F9C008B487B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28C81E461E706F9C008B487B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		28C81E4A1E706F9C008B487B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28C81E4B1E706F9C008B487B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		28C81E4E1E706F9C008B487B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		28C81E4F1E706F9C008B487B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		28C81E511E706F9C008B487B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C92B32E935B2E5FC86444BC /* Pods-Langua.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E55B666VZ8;
+				INFOPLIST_FILE = Langua/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.StevenHurtado.Langua;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		28C81E521E706F9C008B487B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 669F5742311B25AF0D0FD500 /* Pods-Langua.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E55B666VZ8;
+				INFOPLIST_FILE = Langua/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.StevenHurtado.Langua;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28C81E391E706F9C008B487B /* Build configuration list for PBXProject "Langua" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28C81E4E1E706F9C008B487B /* Debug */,
+				28C81E4F1E706F9C008B487B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28C81E501E706F9C008B487B /* Build configuration list for PBXNativeTarget "Langua" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28C81E511E706F9C008B487B /* Debug */,
+				28C81E521E706F9C008B487B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28C81E361E706F9C008B487B /* Project object */;
+}
