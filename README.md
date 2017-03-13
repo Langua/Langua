@@ -1,10 +1,12 @@
 # Langua
-### Learn Without Limits
-Language learning application that provides mentors, resources, and courses for learning clients.
-API Used: ...
-//IMAGE TBD
+### Learn and explore the languages you want to learn.
+![languageicon_small](https://cloud.githubusercontent.com/assets/11231583/23879843/144a1584-0826-11e7-9575-a61354d823c0.png)
 
-Time spent: **1** hours spent in total
+Language learning application that provides mentors, resources, and courses for learning clients.
+
+Time spent: **5** hours spent in total
+
+APIs Used: ...
 
 ## User Stories
 
@@ -28,6 +30,7 @@ The following **optional** features are implemented:
 - [ ] Point system for learners
 - [ ] Location services for finding nearest mentors
 - [ ] UI/Animation Improvements
+- [ ] Multiple forms of authorization: i.e. Email/Password, Google, Twitter, Facebook
 
 The following **additional** features are implemented:
 
