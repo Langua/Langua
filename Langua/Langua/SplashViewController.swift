@@ -75,6 +75,7 @@ class SplashViewController: UIViewController
             self.enterBtn.alpha = 1
             self.languaLabel.frame.origin.y = self.titlePos.y + self.view.frame.height/4
             self.languaLabel.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            self.languImageView.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
         }
         
         self.bambooLeft.animation = "squeezeRight"

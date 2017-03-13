@@ -9,4 +9,12 @@ target 'Langua' do
     pod 'AFNetworking'
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
     pod 'MBProgressHUD'
+    pod 'SideMenuController'
+    pod 'LUExpandableTableView'
+    pod 'Firebase/Storage'
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/RemoteConfig'
+    pod 'FirebaseUI'
+    pod 'NVActivityIndicatorView', '~>3.0'
 end

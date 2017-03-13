@@ -16,6 +16,7 @@
 		28C81E5B1E709DE0008B487B /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E561E708462008B487B /* Comfortaa-Bold.ttf */; };
 		28C81E5C1E709DE0008B487B /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E571E708462008B487B /* Comfortaa-Light.ttf */; };
 		28C81E5D1E709DE0008B487B /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E581E708462008B487B /* Comfortaa-Regular.ttf */; };
+		28F50B1D1E77643C00FAFF6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28F50B1C1E77643C00FAFF6A /* GoogleService-Info.plist */; };
 		9738EEAEE2227926E47BBF32 /* Pods_Langua.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CE07AE2F73E6662E53D107 /* Pods_Langua.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		28C81E571E708462008B487B /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
 		28C81E581E708462008B487B /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
 		28C81E591E70935C008B487B /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		28F50B1C1E77643C00FAFF6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5C92B32E935B2E5FC86444BC /* Pods-Langua.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langua.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Langua/Pods-Langua.debug.xcconfig"; sourceTree = "<group>"; };
 		669F5742311B25AF0D0FD500 /* Pods-Langua.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langua.release.xcconfig"; path = "Pods/Target Support Files/Pods-Langua/Pods-Langua.release.xcconfig"; sourceTree = "<group>"; };
 		84CE07AE2F73E6662E53D107 /* Pods_Langua.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Langua.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 				28C81E451E706F9C008B487B /* Main.storyboard */,
 				28C81E481E706F9C008B487B /* Assets.xcassets */,
 				28C81E4A1E706F9C008B487B /* LaunchScreen.storyboard */,
+				28F50B1C1E77643C00FAFF6A /* GoogleService-Info.plist */,
 				28C81E4D1E706F9C008B487B /* Info.plist */,
 			);
 			path = Langua;
@@ -177,6 +180,7 @@
 				28C81E4C1E706F9C008B487B /* LaunchScreen.storyboard in Resources */,
 				28C81E491E706F9C008B487B /* Assets.xcassets in Resources */,
 				28C81E471E706F9C008B487B /* Main.storyboard in Resources */,
+				28F50B1D1E77643C00FAFF6A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
