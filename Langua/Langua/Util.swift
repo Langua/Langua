@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+class Util
+{
+    static var didSignOutNotification = "didSignOutNotification"
+}
+
+
 extension UIColor
 {
     //langua colors

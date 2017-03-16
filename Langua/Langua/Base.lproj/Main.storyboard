@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-DemiBold</string>
+        </array>
         <array key="Comfortaa-Bold.ttf">
             <string>Comfortaa-Bold</string>
         </array>
@@ -58,6 +61,7 @@
                                 </state>
                                 <connections>
                                     <action selector="enterPressed:" destination="dwu-Aa-UdZ" eventType="touchUpInside" id="RKU-mS-NUb"/>
+                                    <segue destination="bHs-zN-tIm" kind="presentation" identifier="enterSegue" modalTransitionStyle="partialCurl" id="q0d-aX-vUc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -74,6 +78,174 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WO0-gD-zGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="200.80000000000001" y="187.55622188905548"/>
+        </scene>
+        <!--Log In-->
+        <scene sceneID="8bT-Tz-toZ">
+            <objects>
+                <viewController title="Log In" id="bHs-zN-tIm" customClass="AuthViewController" customModule="Langua" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="syk-aj-FVS"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZkU-ns-pw0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mJf-hQ-hs8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.90980392156862744" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="Kcw-q4-Tfc" kind="presentation" modalTransitionStyle="crossDissolve" id="aPm-JN-sJs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rSf-La-HgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1199" y="188"/>
+        </scene>
+        <!--MenuController-->
+        <scene sceneID="dkR-Tp-4IV">
+            <objects>
+                <viewController title="MenuController" id="Kcw-q4-Tfc" customClass="menuController" customModule="Langua" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aKZ-KR-zrc"/>
+                        <viewControllerLayoutGuide type="bottom" id="elh-Z5-wqq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="15d-vA-9bl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.90980392160000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="rcM-E1-Yos" kind="custom" identifier="embedSideController" customClass="SideContainmentSegue" customModule="SideMenuController" id="ga3-JP-d4o"/>
+                        <segue destination="3M3-Rs-8TL" kind="custom" identifier="embedInitialCenterController" customClass="CenterContainmentSegue" customModule="SideMenuController" id="xRe-oB-t6I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VqE-6V-giH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2374" y="188"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="300-3y-gTB">
+            <objects>
+                <viewController id="3jq-Mr-hkm" customClass="HomeViewController" customModule="Langua" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HhO-39-1Md"/>
+                        <viewControllerLayoutGuide type="bottom" id="rBr-jE-FPJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Kc-ZI-dc2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.22352941179999999" green="0.050980392159999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="Rb8-SH-2VL">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="agg-Ne-GTV">
+                            <connections>
+                                <action selector="signOut:" destination="3jq-Mr-hkm" id="86A-aB-ose"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r2R-mQ-JxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4460" y="188"/>
+        </scene>
+        <!--Menu Table View Controller-->
+        <scene sceneID="Y8F-9F-j0v">
+            <objects>
+                <tableViewController id="rcM-E1-Yos" customClass="MenuTableViewController" customModule="Langua" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8LT-9N-L9h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.90980392160000001" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="2aU-1N-dlh">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mentorCell" rowHeight="60" id="CtG-YZ-2Pl" customClass="menuViewCell" customModule="Langua" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="52" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CtG-YZ-2Pl" id="20L-KP-lXO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jvW-GI-ZPX">
+                                            <rect key="frame" x="8" y="5" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="tintColor" red="0.96441024070000003" green="0.40155864949999998" blue="0.1756391179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="View Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wd-J8-Ty3">
+                                            <rect key="frame" x="75" y="12" width="292" height="36"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                                            <color key="textColor" red="0.96441024070000003" green="0.40155864949999998" blue="0.1756391179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="1" height="1"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.35756647749999998" green="0.49706071689999998" blue="0.64286564089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="imgView" destination="jvW-GI-ZPX" id="Z0X-7e-kKa"/>
+                                    <outlet property="viewName" destination="5wd-J8-Ty3" id="yq9-cv-5tc"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="learnerCell" rowHeight="60" id="Uwu-hh-Lsk" customClass="menuViewCell" customModule="Langua" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="112" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uwu-hh-Lsk" id="y1t-n8-se9">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1F5-YF-YNi">
+                                            <rect key="frame" x="8" y="5" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="tintColor" red="0.32314757799999999" green="0.45465713320000001" blue="0.64286564089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="View Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBb-mc-IzK">
+                                            <rect key="frame" x="75" y="12" width="292" height="36"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                                            <color key="textColor" red="0.32314757799999999" green="0.45465713320000001" blue="0.64286564089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="1" height="1"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.48408842520000001" blue="0.33098524489999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.32743090689999998" green="0.55194114640000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="imgView" destination="1F5-YF-YNi" id="cU2-sM-Oss"/>
+                                    <outlet property="viewName" destination="HBb-mc-IzK" id="nWS-Id-54f"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rcM-E1-Yos" id="j5E-Tn-9uT"/>
+                            <outlet property="delegate" destination="rcM-E1-Yos" id="NfN-ZV-Jyu"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6GG-zA-ldh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2374" y="948"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Awk-Yc-2Dd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3M3-Rs-8TL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wLH-rk-gyS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3jq-Mr-hkm" kind="relationship" relationship="rootViewController" id="OeK-vC-lz6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g7u-xM-nEK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3455" y="188"/>
         </scene>
     </scenes>
     <resources>
