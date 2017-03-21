@@ -19,6 +19,13 @@ class MenuTableViewController: UITableViewController
     {
         super.viewDidLoad()
 
+        let backgroundImage = UIImage(named: "bamboo-1x")
+        
+        let imgView = UIImageView(image: backgroundImage)
+        
+        imgView.contentMode = .scaleAspectFill
+        
+        self.tableView.backgroundView = imgView
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

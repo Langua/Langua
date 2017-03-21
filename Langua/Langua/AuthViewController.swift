@@ -21,16 +21,31 @@ class AuthViewController: UIViewController
     var user: FIRUser?
     var displayName = "User"
     
+    @IBOutlet weak var authBtn: UIButton!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+     
         configureAuth()
+        
+        self.authBtn.setTitle("Authorizing...", for: .normal)
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Util.didSignOutNotification), object: nil, queue: OperationQueue.main) { (Notification) in
             
             self.didSignOut()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        self.user = nil
+        configureAuth()
+    }
+    
+    @IBAction func authButtonPressed(_ sender: Any)
+    {
+        loginSession()
     }
 
     deinit
@@ -45,6 +60,9 @@ class AuthViewController: UIViewController
         FUIAuth.defaultAuthUI()?.providers = provider
         
         _authHandle = FIRAuth.auth()?.addStateDidChangeListener({ (auth: FIRAuth, user: FIRUser?) in
+            
+            self.authBtn.setTitle("Authorizing...", for: .normal)
+            
             if let activeUser = user
             {
                 if(self.user != activeUser)
@@ -52,10 +70,14 @@ class AuthViewController: UIViewController
                     self.user = activeUser
                     
                     self.displayName = (self.user?.displayName!)!
+                    
+                    self.performSegue(withIdentifier: "authSegue", sender: self)
                 }
             }
             else
             {
+                
+                self.authBtn.setTitle("Authorize", for: .normal)
                 self.loginSession()
             }
         })
