@@ -61,23 +61,50 @@ class AuthViewController: UIViewController
         
         _authHandle = FIRAuth.auth()?.addStateDidChangeListener({ (auth: FIRAuth, user: FIRUser?) in
             
-            self.authBtn.setTitle("Authorizing...", for: .normal)
-            
             if let activeUser = user
             {
                 if(self.user != activeUser)
                 {
                     self.user = activeUser
                     
-                    self.displayName = (self.user?.displayName!)!
+                    self.ref = FIRDatabase.database().reference()
                     
-                    self.performSegue(withIdentifier: "authSegue", sender: self)
+                    if(self.user?.uid != nil && self.user?.email != nil)
+                    {
+                        print(self.user?.uid)
+                        
+                        print(self.user?.email)
+                        
+                        self.ref.child("user").child((self.user?.uid)!).observe(.value, with: { (snap: FIRDataSnapshot) in
+
+                            if(snap.hasChild("displayName"))
+                            {
+                                let currentDisplayName = snap.childSnapshot(forPath: "displayName").value
+                                Util._currentDisplayName = currentDisplayName as? String
+                                
+                                if(Util._currentDisplayName == "")
+                                {
+                                    self.performSegue(withIdentifier: "authAddDisplaySegue", sender: self.user)
+                                }
+                                else
+                                {
+                                    self.ref.child("user").child((self.user?.uid)!).setValue(["email" : self.user?.email!, "displayName" : currentDisplayName])
+                                    
+                                    self.performSegue(withIdentifier: "authSegue", sender: self.user)
+                                }
+                            }
+                            else
+                            {
+                                self.ref.child("user").child((self.user?.uid)!).setValue(["email" : self.user?.email!, "displayName" : ""])
+                                
+                                self.performSegue(withIdentifier: "authAddDisplaySegue", sender: self.user)
+                            }
+                        })
+                    }
                 }
             }
             else
             {
-                
-                self.authBtn.setTitle("Authorize", for: .normal)
                 self.loginSession()
             }
         })
@@ -103,6 +130,7 @@ class AuthViewController: UIViewController
     func loginSession()
     {
         let authViewController = FUIAuth.defaultAuthUI()!.authViewController()
+        authViewController.navigationItem.leftBarButtonItem?.isEnabled = false
         present(authViewController, animated: true, completion: nil)
     }
     
@@ -112,15 +140,17 @@ class AuthViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if(segue.identifier == "authSegue" || segue.identifier == "authAddDisplaySegue")
+        {
+            let sendUser = sender as! FIRUser
+            
+            Util._currentUser = sendUser
+        }
     }
-    */
 
 }

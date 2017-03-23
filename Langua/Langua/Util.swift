@@ -8,12 +8,60 @@
 
 import Foundation
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseAuthUI
 
 class Util
 {
     static var didSignOutNotification = "didSignOutNotification"
+    static var _currentUser : FIRUser?
+    static var _currentDisplayName : String?
+    
+    class func invokeAlertMethod(_ strTitle: NSString, strBody: NSString, delegate: AnyObject?)
+    {
+        let alert = UIAlertController(title: strTitle as String, message: strBody as String, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "Okay", style: .default){ _ in}
+        
+        alert.addAction(action1)
+        
+        let rootVC = UIApplication.shared.keyWindow?.rootViewController
+        rootVC?.present(alert, animated: true){}
+    }
 }
 
+extension CALayer
+{
+    
+    func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat)
+    {
+        
+        let border = CALayer()
+        
+        switch edge
+        {
+        case UIRectEdge.top:
+            border.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: thickness)
+            break
+        case UIRectEdge.bottom:
+            border.frame = CGRect(x: 0, y: self.frame.height - thickness, width: self.frame.width, height: thickness)
+            break
+        case UIRectEdge.left:
+            border.frame = CGRect(x: 0, y: 0, width: thickness, height: self.frame.height)
+            break
+        case UIRectEdge.right:
+            border.frame = CGRect(x: self.frame.width - thickness, y: 0, width: thickness, height: self.frame.height)
+            break
+        default:
+            break
+        }
+        
+        border.backgroundColor = color.cgColor;
+        
+        self.addSublayer(border)
+    }
+    
+}
 
 extension UIColor
 {
@@ -27,13 +75,25 @@ extension UIColor
     static var myOuterSpaceBlack: UIColor
     {
         //424B54
-        return UIColor(red: 250.0/255.0, green: 123.0/255.0, blue: 84.0/255.0, alpha: 1)
+        return UIColor(red: 66.0/255.0, green: 75.0/255.0, blue: 84.0/255.0, alpha: 1)
+    }
+    
+    static var myLightBambooGreen: UIColor
+    {
+        //6BCF63
+        return UIColor(red: 107.0/255.0, green: 207.0/255.0, blue: 99.0/255.0, alpha: 1)
+    }
+    
+    static var myDarkBambooGreen: UIColor
+    {
+        //4C9347
+        return UIColor(red: 76.0/255.0, green: 147.0/255.0, blue: 71.0/255.0, alpha: 1)
     }
     
     static var myIsabellineWhite: UIColor
     {
         //F6E8EA
-        return UIColor(red: 250.0/255.0, green: 123.0/255.0, blue: 84.0/255.0, alpha: 1)
+        return UIColor(red: 246.0/255.0, green: 232.0/255.0, blue: 234.0/255.0, alpha: 1)
     }
     
     static var myCarminePink: UIColor

@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Langu Solo small.png",
+      "filename" : "Japan-48.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Langu Solo-1.png",
+      "filename" : "Japan-96.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Langu Solo.png",
+      "filename" : "Japan-97.png",
       "scale" : "3x"
     }
   ],

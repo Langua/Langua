@@ -28,7 +28,7 @@ class menuController: SideMenuController
         SideMenuController.preferences.drawing.sidePanelPosition = .overCenterPanelLeft
         SideMenuController.preferences.drawing.sidePanelWidth = 300
         SideMenuController.preferences.drawing.centerPanelShadow = true
-        SideMenuController.preferences.animating.statusBarBehaviour = .showUnderlay
+        SideMenuController.preferences.animating.statusBarBehaviour = .fadeAnimation
         
         super.init(coder: aDecoder)
     }

@@ -16,12 +16,15 @@
 		28C81E5B1E709DE0008B487B /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E561E708462008B487B /* Comfortaa-Bold.ttf */; };
 		28C81E5C1E709DE0008B487B /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E571E708462008B487B /* Comfortaa-Light.ttf */; };
 		28C81E5D1E709DE0008B487B /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E581E708462008B487B /* Comfortaa-Regular.ttf */; };
+		28E61E521E834018000175F5 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E61E511E834018000175F5 /* CatalogViewController.swift */; };
+		28E61E551E83464A000175F5 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E61E541E83464A000175F5 /* CourseCell.swift */; };
 		28F50B1D1E77643C00FAFF6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28F50B1C1E77643C00FAFF6A /* GoogleService-Info.plist */; };
 		28F50B221E77698000FAFF6A /* menuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F50B211E77698000FAFF6A /* menuController.swift */; };
 		28F50B241E776DB800FAFF6A /* menuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F50B231E776DB800FAFF6A /* menuViewCell.swift */; };
 		28F50B261E776DE300FAFF6A /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F50B251E776DE300FAFF6A /* MenuTableViewController.swift */; };
 		28F50B281E7A03B200FAFF6A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F50B271E7A03B200FAFF6A /* AuthViewController.swift */; };
 		28F50B2A1E7A0AB500FAFF6A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F50B291E7A0AB500FAFF6A /* HomeViewController.swift */; };
+		28F50B551E8202B200FAFF6A /* MiscInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F50B541E8202B100FAFF6A /* MiscInfoViewController.swift */; };
 		9738EEAEE2227926E47BBF32 /* Pods_Langua.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CE07AE2F73E6662E53D107 /* Pods_Langua.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,12 +40,15 @@
 		28C81E571E708462008B487B /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
 		28C81E581E708462008B487B /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
 		28C81E591E70935C008B487B /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		28E61E511E834018000175F5 /* CatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
+		28E61E541E83464A000175F5 /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		28F50B1C1E77643C00FAFF6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28F50B211E77698000FAFF6A /* menuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuController.swift; sourceTree = "<group>"; };
 		28F50B231E776DB800FAFF6A /* menuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuViewCell.swift; sourceTree = "<group>"; };
 		28F50B251E776DE300FAFF6A /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		28F50B271E7A03B200FAFF6A /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		28F50B291E7A0AB500FAFF6A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		28F50B541E8202B100FAFF6A /* MiscInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscInfoViewController.swift; sourceTree = "<group>"; };
 		5C92B32E935B2E5FC86444BC /* Pods-Langua.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langua.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Langua/Pods-Langua.debug.xcconfig"; sourceTree = "<group>"; };
 		669F5742311B25AF0D0FD500 /* Pods-Langua.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Langua.release.xcconfig"; path = "Pods/Target Support Files/Pods-Langua/Pods-Langua.release.xcconfig"; sourceTree = "<group>"; };
 		84CE07AE2F73E6662E53D107 /* Pods_Langua.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Langua.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,12 +120,23 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		28E61E531E83462F000175F5 /* CatalogControllers */ = {
+			isa = PBXGroup;
+			children = (
+				28E61E511E834018000175F5 /* CatalogViewController.swift */,
+				28E61E541E83464A000175F5 /* CourseCell.swift */,
+			);
+			name = CatalogControllers;
+			sourceTree = "<group>";
+		};
 		28F50B1E1E77694100FAFF6A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				28C81E591E70935C008B487B /* SplashViewController.swift */,
 				28F50B271E7A03B200FAFF6A /* AuthViewController.swift */,
 				28F50B291E7A0AB500FAFF6A /* HomeViewController.swift */,
+				28F50B541E8202B100FAFF6A /* MiscInfoViewController.swift */,
+				28E61E531E83462F000175F5 /* CatalogControllers */,
 				28F50B201E77695500FAFF6A /* MenuControllers */,
 			);
 			name = ViewControllers;
@@ -278,7 +295,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28E61E521E834018000175F5 /* CatalogViewController.swift in Sources */,
+				28F50B551E8202B200FAFF6A /* MiscInfoViewController.swift in Sources */,
 				28F50B221E77698000FAFF6A /* menuController.swift in Sources */,
+				28E61E551E83464A000175F5 /* CourseCell.swift in Sources */,
 				28F50B241E776DB800FAFF6A /* menuViewCell.swift in Sources */,
 				28F50B261E776DE300FAFF6A /* MenuTableViewController.swift in Sources */,
 				28F50B2A1E7A0AB500FAFF6A /* HomeViewController.swift in Sources */,
