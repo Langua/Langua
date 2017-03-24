@@ -50,7 +50,8 @@ class AuthViewController: UIViewController
 
     deinit
     {
-        FIRAuth.auth()?.removeStateDidChangeListener(_authHandle)
+//        FIRAuth.auth()?.removeStateDidChangeListener(_authHandle)
+//        self.ref.removeObserver(withHandle: self._refHandle)
     }
     
     func configureAuth()
@@ -75,7 +76,7 @@ class AuthViewController: UIViewController
                         
                         print(self.user?.email)
                         
-                        self.ref.child("user").child((self.user?.uid)!).observe(.value, with: { (snap: FIRDataSnapshot) in
+                        self.ref.child("user").child((self.user?.uid)!).observeSingleEvent(of: .value, with: { (snap: FIRDataSnapshot) in
 
                             if(snap.hasChild("displayName"))
                             {
@@ -88,7 +89,8 @@ class AuthViewController: UIViewController
                                 }
                                 else
                                 {
-                                    self.ref.child("user").child((self.user?.uid)!).setValue(["email" : self.user?.email!, "displayName" : currentDisplayName])
+                                    self.ref.child("user").child((self.user?.uid)!).updateChildValues(["email" : self.user!.email!, "displayName" :currentDisplayName])
+//                                    setValue(["email" : self.user?.email!, "displayName" : currentDisplayName])
                                     Util._currentUser = self.user
                                     self.performSegue(withIdentifier: "authSegue", sender: self.user)
                                 }

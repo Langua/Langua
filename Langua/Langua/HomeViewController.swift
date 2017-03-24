@@ -37,7 +37,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
         self.currentUser = Util._currentUser
         
-        self.ref = FIRDatabase.database().reference()
+//        self.ref = FIRDatabase.database().reference()
         
         self.displayNameTextField.text = Util._currentDisplayName
 

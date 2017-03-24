@@ -24,6 +24,8 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     
     var langDict = [NSDictionary]()
+    var generalDict = [NSDictionary]()
+    var courseVal = [NSDictionary]()
     
     override func viewDidLoad()
     {
@@ -32,6 +34,12 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.currentUser = Util._currentUser
         
         self.ref = FIRDatabase.database().reference()
+//        
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Util.didSnapCatalogNotification), object: nil, queue: OperationQueue.main) { (Notification) in
+//            
+//            self.didSnap()
+//        }
+
         
         configCourseLog()
         
@@ -40,22 +48,90 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.catalogImageView.image = UIImage(named: "Courses Filled-50")?.withRenderingMode(.alwaysTemplate)
     }
     
+    func configDatabase()
+    {
+        print("Gen Dict \(generalDict.count)")
+        for dict in generalDict
+        {
+            let currentLang = dict["language"] as? String
+            var exists = false
+            
+            //using current language in iteration, determine whether language in course dictionary exists and whether user is mentor or learner;
+            for lang in courseVal
+            {
+                if(lang.object(forKey: "language") as! String == currentLang!)
+                {
+                    let snapLanguage = lang["language"]
+                    let mentValue = lang["mentor"]
+                    let learnValue = lang["learner"]
+                    
+                    print("\nLang: \(snapLanguage)")
+                    print("Mentor: \(mentValue)")
+                    print("Learner: \(learnValue)")
+                    
+                    self.langDict.append(lang)
+                    
+                    exists = true
+                    break
+                }
+            }
+            
+            if(!exists)
+            {
+                let failLang = ["language" : currentLang!, "mentor": "false", "learner" : "false"]
+                self.langDict.append(failLang as NSDictionary)
+            }
+        }
+        self.tableView.reloadData()
+        
+        //create ref to database and populate user's modules/courses/ language,mentor,learner
+        
+        print((self.currentUser?.uid)!)
+//        let childUpdates = ["/modules/courses": self.langDict]
+        
+//        ref.child("user").child((self.currentUser?.uid)!).setValue(childUpdates)
+        let childUpdates = ["/user/\((currentUser?.uid)!)/modules/courses": self.langDict]
+        self.ref.updateChildValues(childUpdates)
+
+        
+//        self.ref.updateChildValues(childUpdates)
+        print(self.langDict.count)
+        
+        
+        for dict in self.langDict
+        {
+            print("DICT")
+            let snapLanguage = dict["language"]
+            let mentValue = dict["mentor"]
+            let learnValue = dict["learner"]
+            
+            print("\nLang: \(snapLanguage)")
+            print("Mentor: \(mentValue)")
+            print("Learner: \(learnValue)")
+            
+        }
+
+    }
+    
     func configCourseLog()
     {
-        var i = 0
-        
-        self.ref.child("modules").child("courses").observe(.value) { (snap : FIRDataSnapshot) in
-            let generalDict = snap.value as? [NSDictionary]
+        FIRAuth.auth()?.addStateDidChangeListener { (auth: FIRAuth, user: FIRUser?) in
             
-            self.ref.child("user").child((self.currentUser?.uid)!).observe(.value) { (usersnap: FIRDataSnapshot) in
+//            let childUpdates = ["/user/\((user?.uid)!)/modules/courses": ["This" : "works"]]
+//            self.ref.updateChildValues(childUpdates)
+//        }
+        
+//        let childUpdates = ["modules": ["courses": self.langDict]]
+//        
+//        ref.child("user").child((self.currentUser?.uid)!).setValue(childUpdates)
+
+//
+            self.langDict.removeAll(keepingCapacity: false)
+            
+            self.ref.child("modules").child("courses").observeSingleEvent(of: .value) { (snap : FIRDataSnapshot) in
+                 self.generalDict = (snap.value as? [NSDictionary])!
                 
-                //infinite loop
-                print(i)
-                i += 1
-                for dict in generalDict!
-                {
-                    
-                    let currentLang = dict["language"] as? String
+                self.ref.child("user").child((self.currentUser?.uid)!).observeSingleEvent(of: .value) { (usersnap: FIRDataSnapshot) in
                     
                     if(usersnap.hasChild("modules"))
                     {
@@ -64,65 +140,11 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
                         if(modSnap.hasChild("courses"))
                         {
                             let courseSnap = modSnap.childSnapshot(forPath: "courses")
-                            let courseVal = courseSnap.value as? [NSDictionary]
-                            
-                            var exists = false
-                            //using current language in iteration, determine whether language in course dictionary exists and whether user is mentor or learner;
-                            
-                            for lang in courseVal!
-                            {
-                                if(lang.object(forKey: "language") as! String == currentLang!)
-                                {
-                                    let snapLanguage = lang["language"]
-                                    let mentValue = lang["mentor"]
-                                    let learnValue = lang["learner"]
-                                    
-                                    print("\nLang: \(snapLanguage)")
-                                    print("Mentor: \(mentValue)")
-                                    print("Learner: \(learnValue)")
-                                    
-                                    self.langDict.append(lang)
-                                    
-                                    exists = true
-                                    break
-                                }
-                            }
-                            
-                            if(!exists)
-                            {
-                                let failLang = ["language" : currentLang!, "mentor": "false", "learner" : "false"]
-                                self.langDict.append(failLang as NSDictionary)
-                                
-                                //create ref to database and populate user's modules/courses/ language,mentor,learner
-                                print((self.currentUser?.uid)!)
-                                let childUpdates = ["/user/\((self.currentUser?.uid)!)/modules/courses": self.langDict]
-                                self.ref.updateChildValues(childUpdates)
-                            }
-                            
-                        }
-                        else
-                        {
-                            //create courses for user
-                            let failLang = ["language" : currentLang!, "mentor": "false", "learner" : "false"]
-                            self.langDict.append(failLang as NSDictionary)
-                            
-                            print((self.currentUser?.uid)!)
-                            let childUpdates = ["/user/\((self.currentUser?.uid)!)/modules/courses": self.langDict]
-                            self.ref.updateChildValues(childUpdates)
-//                            self.ref.child("user").child((self.currentUser?.uid)!).child("modules").child("courses").setValue(["language": currentLang!, "mentor":"false", "learner":"false"])
+                            self.courseVal = (courseSnap.value as? [NSDictionary])!
                         }
                     }
-                    else
-                    {
-                        //create modules and courses for user
-                        let failLang = ["language" : currentLang!, "mentor": "false", "learner" : "false"]
-                        self.langDict.append(failLang as NSDictionary)
-                        
-                        print((self.currentUser?.uid)!)
-                        let childUpdates = ["/user/\((self.currentUser?.uid)!)/modules/courses": self.langDict]
-                        self.ref.updateChildValues(childUpdates)
-//                        self.ref.child("user").child((self.currentUser?.uid)!).child("modules").child("courses").setValue(["language": currentLang!, "mentor":"false", "learner":"false"])
-                    }
+                    
+                    self.configDatabase()
                 }
             }
         }
@@ -142,7 +164,7 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
         let mentorVal = dict["mentor"] as? String
         let learnerVal = dict["learner"] as? String
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier!, for: indexPath) as! CourseCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(identifier!)Cell", for: indexPath) as! CourseCell
         
         if(mentorVal == "true")
         {
