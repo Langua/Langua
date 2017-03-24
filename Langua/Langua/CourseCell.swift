@@ -11,6 +11,12 @@ import UIKit
 class CourseCell: UITableViewCell
 {
 
+    @IBOutlet weak var flagImageView: UIImageView!
+    
+    @IBOutlet weak var mentorSwitch: UISwitch!
+    
+    @IBOutlet weak var learnerSwitch: UISwitch!
+    
     override func awakeFromNib()
     {
         super.awakeFromNib()

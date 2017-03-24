@@ -26,7 +26,7 @@ class AuthViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-     
+        
         configureAuth()
         
         self.authBtn.setTitle("Authorizing...", for: .normal)
@@ -89,14 +89,14 @@ class AuthViewController: UIViewController
                                 else
                                 {
                                     self.ref.child("user").child((self.user?.uid)!).setValue(["email" : self.user?.email!, "displayName" : currentDisplayName])
-                                    
+                                    Util._currentUser = self.user
                                     self.performSegue(withIdentifier: "authSegue", sender: self.user)
                                 }
                             }
                             else
                             {
                                 self.ref.child("user").child((self.user?.uid)!).setValue(["email" : self.user?.email!, "displayName" : ""])
-                                
+                                Util._currentUser = self.user
                                 self.performSegue(withIdentifier: "authAddDisplaySegue", sender: self.user)
                             }
                         })

@@ -48,6 +48,8 @@ class MenuTableViewController: UITableViewController
 
     func setUpLanguages()
     {
+        print((self.user?.uid)!)
+        
         self.ref.child("user").child((self.user?.uid)!).observe(.value) { (snap: FIRDataSnapshot) in
             if(snap.hasChild("modules"))
             {

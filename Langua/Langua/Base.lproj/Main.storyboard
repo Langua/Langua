@@ -376,6 +376,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.7803921568627451" green="0.0" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="flagImageView" destination="GKc-2H-Q8r" id="nwh-sN-Oxo"/>
+                                            <outlet property="learnerSwitch" destination="PBA-iY-Xn9" id="orR-YU-Qob"/>
+                                            <outlet property="mentorSwitch" destination="KgM-86-6sJ" id="Y3J-rT-7ll"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="spanishCell" rowHeight="75" id="YVW-QV-j5a" customClass="CourseCell" customModule="Langua" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="103" width="375" height="75"/>
@@ -425,6 +430,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94509803921568625" green="0.74901960784313726" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="flagImageView" destination="RBr-Co-oEm" id="lug-Tz-7oU"/>
+                                            <outlet property="learnerSwitch" destination="v7W-5Z-FY3" id="ody-uf-OLS"/>
+                                            <outlet property="mentorSwitch" destination="1yx-SZ-DYF" id="qti-MT-W7u"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="frenchCell" rowHeight="75" id="h1R-AP-4tI" customClass="CourseCell" customModule="Langua" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="178" width="375" height="75"/>
@@ -474,6 +484,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.44705882352941173" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="flagImageView" destination="jgX-wu-Srq" id="can-xx-276"/>
+                                            <outlet property="learnerSwitch" destination="Y0o-4D-YAZ" id="Eau-ut-lx1"/>
+                                            <outlet property="mentorSwitch" destination="n73-U3-rLN" id="CLJ-e5-D1Q"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

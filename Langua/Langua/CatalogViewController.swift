@@ -42,42 +42,86 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func configCourseLog()
     {
+        var i = 0
+        
         self.ref.child("modules").child("courses").observe(.value) { (snap : FIRDataSnapshot) in
             let generalDict = snap.value as? [NSDictionary]
             
-            self.ref.child("user").child((self.currentUser?.uid)!).observe(.value) { (snap: FIRDataSnapshot) in
+            self.ref.child("user").child((self.currentUser?.uid)!).observe(.value) { (usersnap: FIRDataSnapshot) in
                 
-                if(snap.hasChild("modules"))
+                //infinite loop
+                print(i)
+                i += 1
+                for dict in generalDict!
                 {
-                    let modSnap = snap.childSnapshot(forPath: "modules")
                     
-                    for dict in generalDict!
+                    let currentLang = dict["language"] as? String
+                    
+                    if(usersnap.hasChild("modules"))
                     {
+                        let modSnap = usersnap.childSnapshot(forPath: "modules")
+                        
                         if(modSnap.hasChild("courses"))
                         {
-                            let courseSnap = modSnap.value(forKey: "courses") as? [NSDictionary]
+                            let courseSnap = modSnap.childSnapshot(forPath: "courses")
+                            let courseVal = courseSnap.value as? [NSDictionary]
                             
-                            let currentLang = dict["language"]
-                            
+                            var exists = false
                             //using current language in iteration, determine whether language in course dictionary exists and whether user is mentor or learner;
-                            //if learner/mentor , along with language, assign key value to true in langDict [NSDictionary]
-                            //assign truth values to that languages switches in tableview cell
                             
-//                            if(modSnap.hasChild("mentor"))
-//                            {
-//                                self.mentorLang = (modSnap.value(forKey: "mentor") as? [String: String])!
-//                            }
-//                            
-//                            if(modSnap.hasChild("learner"))
-//                            {
-//                                self.mentorLang = (modSnap.value(forKey: "learner") as? [String: String])!
-//                            }
+                            for lang in courseVal!
+                            {
+                                if(lang.object(forKey: "language") as! String == currentLang!)
+                                {
+                                    let snapLanguage = lang["language"]
+                                    let mentValue = lang["mentor"]
+                                    let learnValue = lang["learner"]
+                                    
+                                    print("\nLang: \(snapLanguage)")
+                                    print("Mentor: \(mentValue)")
+                                    print("Learner: \(learnValue)")
+                                    
+                                    self.langDict.append(lang)
+                                    
+                                    exists = true
+                                    break
+                                }
+                            }
+                            
+                            if(!exists)
+                            {
+                                let failLang = ["language" : currentLang!, "mentor": "false", "learner" : "false"]
+                                self.langDict.append(failLang as NSDictionary)
+                                
+                                //create ref to database and populate user's modules/courses/ language,mentor,learner
+                                print((self.currentUser?.uid)!)
+                                let childUpdates = ["/user/\((self.currentUser?.uid)!)/modules/courses": self.langDict]
+                                self.ref.updateChildValues(childUpdates)
+                            }
                             
                         }
                         else
                         {
+                            //create courses for user
+                            let failLang = ["language" : currentLang!, "mentor": "false", "learner" : "false"]
+                            self.langDict.append(failLang as NSDictionary)
                             
+                            print((self.currentUser?.uid)!)
+                            let childUpdates = ["/user/\((self.currentUser?.uid)!)/modules/courses": self.langDict]
+                            self.ref.updateChildValues(childUpdates)
+//                            self.ref.child("user").child((self.currentUser?.uid)!).child("modules").child("courses").setValue(["language": currentLang!, "mentor":"false", "learner":"false"])
                         }
+                    }
+                    else
+                    {
+                        //create modules and courses for user
+                        let failLang = ["language" : currentLang!, "mentor": "false", "learner" : "false"]
+                        self.langDict.append(failLang as NSDictionary)
+                        
+                        print((self.currentUser?.uid)!)
+                        let childUpdates = ["/user/\((self.currentUser?.uid)!)/modules/courses": self.langDict]
+                        self.ref.updateChildValues(childUpdates)
+//                        self.ref.child("user").child((self.currentUser?.uid)!).child("modules").child("courses").setValue(["language": currentLang!, "mentor":"false", "learner":"false"])
                     }
                 }
             }
@@ -87,29 +131,57 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         //number of courses
-        return 3
+        return langDict.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        switch(indexPath.row)
+        let dict = self.langDict[indexPath.row]
+        
+        let identifier = dict["language"] as? String
+        let mentorVal = dict["mentor"] as? String
+        let learnerVal = dict["learner"] as? String
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier!, for: indexPath) as! CourseCell
+        
+        if(mentorVal == "true")
         {
-            case 0:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "japaneseCell", for: indexPath) as! CourseCell
-                
-                return cell
-            case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "spanishCell", for: indexPath) as! CourseCell
-                
-                return cell
-            case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "frenchCell", for: indexPath) as! CourseCell
-                
-                return cell
-            default:
-                let cell = CourseCell()
-                return cell
+            cell.mentorSwitch.isOn = true
         }
+        else
+        {
+            cell.mentorSwitch.isOn = false
+        }
+        
+        if(learnerVal == "true")
+        {
+            cell.learnerSwitch.isOn = true
+        }
+        else
+        {
+            cell.learnerSwitch.isOn = false
+        }
+        
+        return cell
+        
+//        switch(indexPath.row)
+//        {
+//            case 0:
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "japaneseCell", for: indexPath) as! CourseCell
+//                
+//                return cell
+//            case 1:
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "spanishCell", for: indexPath) as! CourseCell
+//                
+//                return cell
+//            case 2:
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "frenchCell", for: indexPath) as! CourseCell
+//                
+//                return cell
+//            default:
+//                let cell = CourseCell()
+//                return cell
+//        }
         
     }
     
