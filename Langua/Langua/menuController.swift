@@ -40,14 +40,21 @@ class menuController: SideMenuController
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if(segue.identifier == "embedLanguageCenterController")
+        {
+            let indexPath = sender as! IndexPath
+            
+            print("Going on an adventure through language.")
+            print("Row: \(indexPath.row)")
+        }
     }
-    */
 
 }

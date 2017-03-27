@@ -12,13 +12,13 @@ import FirebaseAuthUI
 
 class MenuTableViewController: UITableViewController
 {
-    let segues = ["embedInitialCenterController", "embedInitialCenterController", "embedInitialCenterController", "embedCoursesCenterController", "embedInitialCenterController"]
+    let segues = ["embedInitialCenterController", "embedLanguageCenterController", "embedLanguageCenterController", "embedCoursesCenterController", "OnLogOut"]
     
     var ref : FIRDatabaseReference!
     var user : FIRUser?
     
-    var mentorLang = [String : String]()
-    var learnerLang = [String : String]()
+    var mentorLang = [[String : String]]()
+    var learnerLang = [[String : String]]()
     
     private var previousIndex: NSIndexPath?
     
@@ -55,14 +55,30 @@ class MenuTableViewController: UITableViewController
             {
                 let modSnap = snap.childSnapshot(forPath: "modules")
                 
-                if(modSnap.hasChild("mentor"))
+                if(modSnap.hasChild("courses"))
                 {
-                    self.mentorLang = (modSnap.value(forKey: "mentor") as? [String: String])!
-                }
-                
-                if(modSnap.hasChild("learner"))
-                {
-                    self.mentorLang = (modSnap.value(forKey: "learner") as? [String: String])!
+                    let courseSnap = modSnap.childSnapshot(forPath: "courses")
+                    
+                    let courseDict = courseSnap.value as? [NSDictionary]
+                    
+                    self.mentorLang.removeAll(keepingCapacity: false)
+                    self.learnerLang.removeAll(keepingCapacity: false)
+                    
+                    for dict in courseDict!
+                    {
+                        let isMentor = dict["mentor"] as? String
+                        let isLearner = dict["learner"] as? String
+                        
+                        if(isMentor! == "true")
+                        {
+                            self.mentorLang.append(["language" : dict["language"] as! String])
+                        }
+                        
+                        if(isLearner! == "true")
+                        {
+                            self.learnerLang.append(["language" : dict["language"] as! String])
+                        }
+                    }
                 }
                 
                 self.tableView.reloadData()
@@ -116,7 +132,7 @@ class MenuTableViewController: UITableViewController
         }
         
         print("Perform : \(segues[indexPath.section])")
-        sideMenuController?.performSegue(withIdentifier: segues[indexPath.section], sender: nil)
+        sideMenuController?.performSegue(withIdentifier: segues[indexPath.section], sender: indexPath)
         previousIndex = indexPath as NSIndexPath?
     }
     
@@ -135,7 +151,7 @@ class MenuTableViewController: UITableViewController
             case 1:
     //            cell.viewName.text = "Home"
                 
-                let lang = mentorLang["language"]
+                let lang = mentorLang[indexPath.row]["language"]
                 
                 if(lang == "spanish")
                 {
@@ -161,7 +177,7 @@ class MenuTableViewController: UITableViewController
     
                 break;
             case 2:
-                let lang = learnerLang["language"]
+                let lang = learnerLang[indexPath.row]["language"]
                 
                 if(lang == "spanish")
                 {
@@ -210,6 +226,17 @@ class MenuTableViewController: UITableViewController
             return 0
         }
         
+        if(mentorLang.count == 0 && section == 1)
+        {
+            return 0
+        }
+        
+        if(learnerLang.count == 0 && section == 2)
+        {
+            return 0
+        }
+        
+        
         return 60
     }
     
@@ -219,12 +246,24 @@ class MenuTableViewController: UITableViewController
         {
             case 1:
                 //if mentor array count > 0
+                if(mentorLang.count == 0)
+                {
+                    return nil
+                }
+                
                 let header = tableView.dequeueReusableCell(withIdentifier: "mentorCell") as! menuViewCell
                 header.imgView.image = UIImage(named: "Guru Filled-50")?.withRenderingMode(.alwaysTemplate)
+                header.isUserInteractionEnabled = false
                 return header
             case 2:
+                if(learnerLang.count == 0)
+                {
+                    return nil
+                }
+                
                 let header = tableView.dequeueReusableCell(withIdentifier: "learnerCell") as! menuViewCell
                 header.imgView.image = UIImage(named: "Student Female Filled-50")?.withRenderingMode(.alwaysTemplate)
+                header.isUserInteractionEnabled = false
                 return header
             default:
                 return nil
@@ -267,14 +306,14 @@ class MenuTableViewController: UITableViewController
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+       
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

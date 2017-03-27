@@ -184,27 +184,46 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.learnerSwitch.isOn = false
         }
         
+        cell.mentorSwitch.indexPath = indexPath
+        cell.mentorSwitch.addTarget(self, action: #selector(addMentorCourse(_:)), for: .touchUpInside)
+        
+        cell.learnerSwitch.indexPath = indexPath
+        cell.learnerSwitch.addTarget(self, action: #selector(addLearnerCourse(_:)), for: .touchUpInside)
+        
         return cell
+    }
+    
+    func addMentorCourse(_ sender: Any?)
+    {
+        let mentorSwitch = sender as! CustomSwitch
+        let row = mentorSwitch.indexPath.row
         
-//        switch(indexPath.row)
-//        {
-//            case 0:
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "japaneseCell", for: indexPath) as! CourseCell
-//                
-//                return cell
-//            case 1:
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "spanishCell", for: indexPath) as! CourseCell
-//                
-//                return cell
-//            case 2:
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "frenchCell", for: indexPath) as! CourseCell
-//                
-//                return cell
-//            default:
-//                let cell = CourseCell()
-//                return cell
-//        }
+        print(mentorSwitch.isOn ? "true":"false")
+        self.langDict[row].setValue((mentorSwitch.isOn ? "true":"false"), forKey: "mentor")
         
+        self.ref = FIRDatabase.database().reference()
+        let childUpdates = ["/user/\((currentUser?.uid)!)/modules/courses": self.langDict]
+        self.ref.updateChildValues(childUpdates)
+    }
+    
+    func addLearnerCourse(_ sender: Any?)
+    {
+        let learnerSwitch = sender as! CustomSwitch
+        let row = learnerSwitch.indexPath.row
+        
+        print(learnerSwitch.isOn ? "true":"false")
+        self.langDict[row].setValue((learnerSwitch.isOn ? "true":"false"), forKey: "learner")
+        
+        self.ref = FIRDatabase.database().reference()
+        let childUpdates = ["/user/\((currentUser?.uid)!)/modules/courses": self.langDict]
+        self.ref.updateChildValues(childUpdates)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let cell = tableView.cellForRow(at: indexPath) as! CourseCell
+        cell.selectionStyle = .none
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat

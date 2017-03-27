@@ -8,14 +8,21 @@
 
 import UIKit
 
+class CustomSwitch: UISwitch
+{
+    var indexPath : IndexPath = IndexPath()
+}
+
 class CourseCell: UITableViewCell
 {
 
     @IBOutlet weak var flagImageView: UIImageView!
     
-    @IBOutlet weak var mentorSwitch: UISwitch!
+    @IBOutlet weak var mentorSwitch: CustomSwitch!
     
-    @IBOutlet weak var learnerSwitch: UISwitch!
+    @IBOutlet weak var learnerSwitch: CustomSwitch!
+    
+    var indexPath : IndexPath = IndexPath()
     
     override func awakeFromNib()
     {
