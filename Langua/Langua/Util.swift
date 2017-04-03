@@ -17,6 +17,10 @@ class Util
     static var didSignOutNotification = "didSignOutNotification"
     static var _currentUser : FIRUser?
     static var _currentDisplayName : String?
+    
+    static var _currentUserType : String?
+    static var _currentCourseLanguage : String?
+    
     static var didSnapCatalogNotification = "didSnapCatalogNotification"
     
     class func invokeAlertMethod(_ strTitle: NSString, strBody: NSString, delegate: AnyObject?)

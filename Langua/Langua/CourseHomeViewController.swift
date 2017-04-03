@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuthUI
 import Spring
 
-class CourseHomeViewController: UIViewController
+class CourseHomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate
 {
     @IBOutlet weak var languTeachBtn: SpringButton!
     
@@ -33,13 +33,18 @@ class CourseHomeViewController: UIViewController
     
     @IBOutlet weak var courseNameLabel: UILabel!
     
+    @IBOutlet weak var tableView: UITableView!
+    
     var courseName = String()
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.courseNameLabel.layer.addBorder(edge: .bottom, color: .myDarkBambooGreen, thickness: 2)
+        self.courseName = Util._currentCourseLanguage!
         self.courseNameLabel.text = self.courseName
+        
+        self.chatLabel.text = (Util._currentUserType == "Mentor") ? "Chat with a Learner!" : "Chat with a Mentor!"
         
         self.initializeBtnAnimation()
         self.configDatabase()
@@ -47,7 +52,7 @@ class CourseHomeViewController: UIViewController
     
     func configDatabase()
     {
-        
+        //call for course list of user with passed indexpath
     }
     
     func initializeBtnAnimation()
@@ -140,6 +145,83 @@ class CourseHomeViewController: UIViewController
         self.toggleBtns()
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "courseLessonCell", for: indexPath) as! CourseLessonCell
+        
+        cell.lessonBtn.layer.cornerRadius = cell.lessonBtn.frame.width/2
+        
+        switch(indexPath.row)
+        {
+            case 0:
+                cell.lessonLabel.text = "For Beginners"
+                cell.lessonBtn.setImage(UIImage(named: "Baby Bottle Filled-50"), for: .normal)
+                break
+            case 1:
+                cell.lessonLabel.text = "Common Phrases"
+                cell.lessonBtn.setImage(UIImage(named: "Talk Male Filled-50"), for: .normal)
+                break
+            case 2:
+                cell.lessonLabel.text = "Verbs"
+                cell.lessonBtn.setImage(UIImage(named: "Action Filled-50"), for: .normal)
+                break
+            default:
+                cell.lessonLabel.text = "Tenses"
+                cell.lessonBtn.setImage(UIImage(named: "Tenses Filled-50"), for: .normal)
+                break
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        cell?.selectionStyle = .none
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    {
+        let visibleCells = tableView.visibleCells
+        
+        if visibleCells.count == 0 {
+            return
+        }
+        
+        guard let bottomCell = visibleCells.last else {
+            return
+        }
+        
+        guard let topCell = visibleCells.first else {
+            return
+        }
+        
+        for cell in visibleCells {
+            cell.contentView.alpha = 1.0
+        }
+        
+        let cellHeight = topCell.frame.size.height - 1
+        let tableViewTopPosition = tableView.frame.origin.y
+        let tableViewBottomPosition = tableView.frame.origin.y + tableView.frame.size.height
+        
+        let topCellPositionInTableView = tableView.rectForRow(at: tableView.indexPath(for: topCell)!)
+        let bottomCellPositionInTableView = tableView.rectForRow(at: tableView.indexPath(for: bottomCell)!)
+        let topCellPosition = tableView.convert(topCellPositionInTableView, to: tableView.superview).origin.y
+        let bottomCellPosition = tableView.convert(bottomCellPositionInTableView, to: tableView.superview).origin.y + cellHeight
+        
+        let modifier: CGFloat = 2.5
+        let topCellOpacity = 1.0 - ((tableViewTopPosition - topCellPosition) / cellHeight) * modifier
+        let bottomCellOpacity = 1.0 - ((bottomCellPosition - tableViewBottomPosition) / cellHeight) * modifier
+        
+        topCell.contentView.alpha = topCellOpacity
+        bottomCell.contentView.alpha = bottomCellOpacity
+    }
     
     override func didReceiveMemoryWarning()
     {

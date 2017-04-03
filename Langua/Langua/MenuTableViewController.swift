@@ -121,9 +121,15 @@ class MenuTableViewController: UITableViewController
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath)
     {
-        let cell = tableView.cellForRow(at: indexPath)
+        let cell = tableView.cellForRow(at: indexPath) as! menuViewCell
         
-        cell?.selectionStyle = .none
+        cell.selectionStyle = .none
+        
+        if(segues[indexPath.section] == "OnLogOut")
+        {
+            //log out
+            return
+        }
         
         if let index = previousIndex
         {
@@ -132,6 +138,9 @@ class MenuTableViewController: UITableViewController
         }
         
         print("Perform : \(segues[indexPath.section])")
+        Util._currentUserType = ((indexPath.section == 1) ? "Mentor":"Learner")
+        Util._currentCourseLanguage = cell.viewName.text!
+        
         sideMenuController?.performSegue(withIdentifier: segues[indexPath.section], sender: indexPath)
         previousIndex = indexPath as NSIndexPath?
     }

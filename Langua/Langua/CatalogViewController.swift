@@ -184,6 +184,22 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.learnerSwitch.isOn = false
         }
         
+        
+        switch(identifier!)
+        {
+            case "japanese":
+                cell.flagImageView.image = UIImage(named:"Japan-48")?.withRenderingMode(.alwaysOriginal)
+                break;
+            case "french":
+                cell.flagImageView.image = UIImage(named:"France-48")?.withRenderingMode(.alwaysOriginal)
+                break;
+            case "spanish":
+                cell.flagImageView.image = UIImage(named:"Spain-48")?.withRenderingMode(.alwaysOriginal)
+                break;
+            default:
+                break;
+        }
+        
         cell.mentorSwitch.indexPath = indexPath
         cell.mentorSwitch.addTarget(self, action: #selector(addMentorCourse(_:)), for: .touchUpInside)
         
