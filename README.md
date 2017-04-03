@@ -4,16 +4,16 @@
 
 Language learning application that provides mentors, resources, and courses for learning clients.
 
-Time spent: **5** hours spent in total
+Time spent: **25** hours spent in total
 
 APIs Used: ...
 
 ## User Stories
 
 The following **required (core)** functionality is completed:
-- [ ] User can sign in and be either/or Mentor/Learner
-- [ ] The current signed in user will be persisted across restarts
-- [ ] User can choose multiple languages
+- [X] User can sign in and be either/or Mentor/Learner
+- [X] The current signed in user will be persisted across restarts
+- [X] User can choose multiple languages
 - [ ] User (if learner) can take part of a course, which they can continue at their pace
 - [ ] Learner can see available mentors
 - [ ] Learner has multiple levels
@@ -29,12 +29,13 @@ The following **optional** features are implemented:
 - [ ] Text analysis of translated text
 - [ ] Point system for learners
 - [ ] Location services for finding nearest mentors
-- [ ] UI/Animation Improvements
-- [ ] Multiple forms of authorization: i.e. Email/Password, Google, Twitter, Facebook
+- [X] UI/Animation Improvements
+- [X] Multiple forms of authorization: i.e. Email/Password, Google, Twitter, Facebook
 
 The following **additional** features are implemented:
 
-- [ ] (Optional)
+- [X] Firebase: Relational Database set up
+- [ ] Storage for user profile picture
 
 
 ## Video Walkthrough 
