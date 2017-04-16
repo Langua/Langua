@@ -72,9 +72,9 @@ class HomeViewController: UIViewController, UITextFieldDelegate
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Util.didSignOutNotification), object: nil)
     }
     
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

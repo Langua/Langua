@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		287C9ADE1E887F2700845CDF /* CourseHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287C9ADD1E887F2700845CDF /* CourseHomeViewController.swift */; };
 		28BEFC0E1E930AE300EF9101 /* CourseLessonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BEFC0D1E930AE300EF9101 /* CourseLessonCell.swift */; };
+		28C51F6F1EA3FD0D00948D6F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C51F6E1EA3FD0D00948D6F /* ChatViewController.swift */; };
+		28C51F711EA3FD2600948D6F /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C51F701EA3FD2600948D6F /* ChatCell.swift */; };
 		28C81E421E706F9C008B487B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C81E411E706F9C008B487B /* AppDelegate.swift */; };
 		28C81E471E706F9C008B487B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E451E706F9C008B487B /* Main.storyboard */; };
 		28C81E491E706F9C008B487B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E481E706F9C008B487B /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 /* Begin PBXFileReference section */
 		287C9ADD1E887F2700845CDF /* CourseHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseHomeViewController.swift; sourceTree = "<group>"; };
 		28BEFC0D1E930AE300EF9101 /* CourseLessonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseLessonCell.swift; sourceTree = "<group>"; };
+		28C51F6E1EA3FD0D00948D6F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		28C51F701EA3FD2600948D6F /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		28C81E3E1E706F9C008B487B /* Langua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Langua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C81E411E706F9C008B487B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28C81E461E706F9C008B487B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,8 +88,26 @@
 			children = (
 				287C9ADD1E887F2700845CDF /* CourseHomeViewController.swift */,
 				28BEFC0D1E930AE300EF9101 /* CourseLessonCell.swift */,
+				28C51F6D1EA3FCF900948D6F /* Chat */,
+				28C51F6C1EA3F68800948D6F /* Spanish Source */,
 			);
 			name = Course;
+			sourceTree = "<group>";
+		};
+		28C51F6C1EA3F68800948D6F /* Spanish Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Spanish Source";
+			sourceTree = "<group>";
+		};
+		28C51F6D1EA3FCF900948D6F /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				28C51F6E1EA3FD0D00948D6F /* ChatViewController.swift */,
+				28C51F701EA3FD2600948D6F /* ChatCell.swift */,
+			);
+			name = Chat;
 			sourceTree = "<group>";
 		};
 		28C81E351E706F9C008B487B = {
@@ -317,8 +339,10 @@
 				28F50B261E776DE300FAFF6A /* MenuTableViewController.swift in Sources */,
 				287C9ADE1E887F2700845CDF /* CourseHomeViewController.swift in Sources */,
 				28F50B2A1E7A0AB500FAFF6A /* HomeViewController.swift in Sources */,
+				28C51F711EA3FD2600948D6F /* ChatCell.swift in Sources */,
 				28F50B281E7A03B200FAFF6A /* AuthViewController.swift in Sources */,
 				28BEFC0E1E930AE300EF9101 /* CourseLessonCell.swift in Sources */,
+				28C51F6F1EA3FD0D00948D6F /* ChatViewController.swift in Sources */,
 				28C81E541E707022008B487B /* Util.swift in Sources */,
 				28C81E421E706F9C008B487B /* AppDelegate.swift in Sources */,
 				28C81E5A1E70935C008B487B /* SplashViewController.swift in Sources */,
