@@ -53,6 +53,9 @@ class CourseHomeViewController: UIViewController, UITableViewDelegate, UITableVi
     func configDatabase()
     {
         //call for course list of user with passed indexpath
+        // TODO: - Unique Courses
+            //not each course will have the same type of lessons
+            //this is open for implementation later
     }
     
     func initializeBtnAnimation()

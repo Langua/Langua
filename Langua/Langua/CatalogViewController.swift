@@ -220,6 +220,18 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.ref = FIRDatabase.database().reference()
         let childUpdates = ["/user/\((currentUser?.uid)!)/modules/courses": self.langDict]
         self.ref.updateChildValues(childUpdates)
+        
+        if(mentorSwitch.isOn)
+        {
+            let setMent : NSDictionary = ["online": "1"]
+            
+            let mentorUpdate = ["/modules/courses/\(row)/mentors/\((currentUser?.uid)!)" : setMent]
+            self.ref.updateChildValues(mentorUpdate)
+        }
+        else
+        {
+            //remove
+        }
     }
     
     func addLearnerCourse(_ sender: Any?)
@@ -234,7 +246,6 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
         let childUpdates = ["/user/\((currentUser?.uid)!)/modules/courses": self.langDict]
         self.ref.updateChildValues(childUpdates)
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {

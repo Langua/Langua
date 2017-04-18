@@ -11,6 +11,8 @@
 		28BEFC0E1E930AE300EF9101 /* CourseLessonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BEFC0D1E930AE300EF9101 /* CourseLessonCell.swift */; };
 		28C51F6F1EA3FD0D00948D6F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C51F6E1EA3FD0D00948D6F /* ChatViewController.swift */; };
 		28C51F711EA3FD2600948D6F /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C51F701EA3FD2600948D6F /* ChatCell.swift */; };
+		28C51F8A1EA6A9F900948D6F /* MentorAvailableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C51F891EA6A9F900948D6F /* MentorAvailableTableViewController.swift */; };
+		28C51F8C1EA6AA4900948D6F /* MentorAvailableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C51F8B1EA6AA4900948D6F /* MentorAvailableCell.swift */; };
 		28C81E421E706F9C008B487B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C81E411E706F9C008B487B /* AppDelegate.swift */; };
 		28C81E471E706F9C008B487B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E451E706F9C008B487B /* Main.storyboard */; };
 		28C81E491E706F9C008B487B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E481E706F9C008B487B /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 		28BEFC0D1E930AE300EF9101 /* CourseLessonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseLessonCell.swift; sourceTree = "<group>"; };
 		28C51F6E1EA3FD0D00948D6F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		28C51F701EA3FD2600948D6F /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		28C51F891EA6A9F900948D6F /* MentorAvailableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentorAvailableTableViewController.swift; sourceTree = "<group>"; };
+		28C51F8B1EA6AA4900948D6F /* MentorAvailableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentorAvailableCell.swift; sourceTree = "<group>"; };
 		28C81E3E1E706F9C008B487B /* Langua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Langua.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C81E411E706F9C008B487B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28C81E461E706F9C008B487B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,7 +92,7 @@
 			children = (
 				287C9ADD1E887F2700845CDF /* CourseHomeViewController.swift */,
 				28BEFC0D1E930AE300EF9101 /* CourseLessonCell.swift */,
-				28C51F6D1EA3FCF900948D6F /* Chat */,
+				28C51F881EA6A9C700948D6F /* MentorAvailable */,
 				28C51F6C1EA3F68800948D6F /* Spanish Source */,
 			);
 			name = Course;
@@ -108,6 +112,16 @@
 				28C51F701EA3FD2600948D6F /* ChatCell.swift */,
 			);
 			name = Chat;
+			sourceTree = "<group>";
+		};
+		28C51F881EA6A9C700948D6F /* MentorAvailable */ = {
+			isa = PBXGroup;
+			children = (
+				28C51F891EA6A9F900948D6F /* MentorAvailableTableViewController.swift */,
+				28C51F8B1EA6AA4900948D6F /* MentorAvailableCell.swift */,
+				28C51F6D1EA3FCF900948D6F /* Chat */,
+			);
+			name = MentorAvailable;
 			sourceTree = "<group>";
 		};
 		28C81E351E706F9C008B487B = {
@@ -331,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C51F8A1EA6A9F900948D6F /* MentorAvailableTableViewController.swift in Sources */,
 				28E61E521E834018000175F5 /* CatalogViewController.swift in Sources */,
 				28F50B551E8202B200FAFF6A /* MiscInfoViewController.swift in Sources */,
 				28F50B221E77698000FAFF6A /* menuController.swift in Sources */,
@@ -346,6 +361,7 @@
 				28C81E541E707022008B487B /* Util.swift in Sources */,
 				28C81E421E706F9C008B487B /* AppDelegate.swift in Sources */,
 				28C81E5A1E70935C008B487B /* SplashViewController.swift in Sources */,
+				28C51F8C1EA6AA4900948D6F /* MentorAvailableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
