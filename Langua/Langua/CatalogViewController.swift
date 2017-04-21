@@ -23,9 +23,9 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tableView: UITableView!
     
-    var langDict = [NSDictionary]()
-    var generalDict = [NSDictionary]()
-    var courseVal = [NSDictionary]()
+    var langDict = [NSMutableDictionary]()
+    var generalDict = [NSMutableDictionary]()
+    var courseVal = [NSMutableDictionary]()
     
     override func viewDidLoad()
     {
@@ -34,12 +34,6 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.currentUser = Util._currentUser
         
         self.ref = FIRDatabase.database().reference()
-//        
-//        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Util.didSnapCatalogNotification), object: nil, queue: OperationQueue.main) { (Notification) in
-//            
-//            self.didSnap()
-//        }
-
         
         configCourseLog()
         
@@ -61,16 +55,7 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
             {
                 if(lang.object(forKey: "language") as! String == currentLang!)
                 {
-                    let snapLanguage = lang["language"]
-                    let mentValue = lang["mentor"]
-                    let learnValue = lang["learner"]
-                    
-                    print("\nLang: \(snapLanguage)")
-                    print("Mentor: \(mentValue)")
-                    print("Learner: \(learnValue)")
-                    
                     self.langDict.append(lang)
-                    
                     exists = true
                     break
                 }
@@ -79,7 +64,7 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
             if(!exists)
             {
                 let failLang = ["language" : currentLang!, "mentor": "false", "learner" : "false"]
-                self.langDict.append(failLang as NSDictionary)
+                self.langDict.append(failLang as! NSMutableDictionary)
             }
         }
         self.tableView.reloadData()
@@ -87,30 +72,10 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
         //create ref to database and populate user's modules/courses/ language,mentor,learner
         
         print((self.currentUser?.uid)!)
-//        let childUpdates = ["/modules/courses": self.langDict]
-        
-//        ref.child("user").child((self.currentUser?.uid)!).setValue(childUpdates)
+
         let childUpdates = ["/user/\((currentUser?.uid)!)/modules/courses": self.langDict]
         self.ref.updateChildValues(childUpdates)
-
-        
-//        self.ref.updateChildValues(childUpdates)
         print(self.langDict.count)
-        
-        
-        for dict in self.langDict
-        {
-            print("DICT")
-            let snapLanguage = dict["language"]
-            let mentValue = dict["mentor"]
-            let learnValue = dict["learner"]
-            
-            print("\nLang: \(snapLanguage)")
-            print("Mentor: \(mentValue)")
-            print("Learner: \(learnValue)")
-            
-        }
-
     }
     
     func configCourseLog()
@@ -129,7 +94,7 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.langDict.removeAll(keepingCapacity: false)
             
             self.ref.child("modules").child("courses").observeSingleEvent(of: .value) { (snap : FIRDataSnapshot) in
-                 self.generalDict = (snap.value as? [NSDictionary])!
+                 self.generalDict = (snap.value as? [NSMutableDictionary])!
                 
                 self.ref.child("user").child((self.currentUser?.uid)!).observeSingleEvent(of: .value) { (usersnap: FIRDataSnapshot) in
                     
@@ -140,7 +105,7 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
                         if(modSnap.hasChild("courses"))
                         {
                             let courseSnap = modSnap.childSnapshot(forPath: "courses")
-                            self.courseVal = (courseSnap.value as? [NSDictionary])!
+                            self.courseVal = (courseSnap.value as? [NSMutableDictionary])!
                         }
                     }
                     
@@ -215,7 +180,7 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
         let row = mentorSwitch.indexPath.row
         
         print(mentorSwitch.isOn ? "true":"false")
-        self.langDict[row].setValue((mentorSwitch.isOn ? "true":"false"), forKey: "mentor")
+        self.langDict[row]["mentor"] = (mentorSwitch.isOn ? "true":"false")
         
         self.ref = FIRDatabase.database().reference()
         let childUpdates = ["/user/\((currentUser?.uid)!)/modules/courses": self.langDict]
@@ -223,7 +188,7 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if(mentorSwitch.isOn)
         {
-            let setMent : NSDictionary = ["online": "1"]
+            let setMent : NSDictionary = ["online": "1", "mentorname" : (currentUser?.displayName)!]
             
             let mentorUpdate = ["/modules/courses/\(row)/mentors/\((currentUser?.uid)!)" : setMent]
             self.ref.updateChildValues(mentorUpdate)
@@ -231,6 +196,7 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
         else
         {
             //remove
+            ref.child("modules").child("courses").child("\(row)").child("mentors").child((currentUser?.uid)!).removeValue()
         }
     }
     
@@ -240,7 +206,7 @@ class CatalogViewController: UIViewController, UITableViewDelegate, UITableViewD
         let row = learnerSwitch.indexPath.row
         
         print(learnerSwitch.isOn ? "true":"false")
-        self.langDict[row].setValue((learnerSwitch.isOn ? "true":"false"), forKey: "learner")
+        self.langDict[row]["learner"] = (learnerSwitch.isOn ? "true":"false")
         
         self.ref = FIRDatabase.database().reference()
         let childUpdates = ["/user/\((currentUser?.uid)!)/modules/courses": self.langDict]

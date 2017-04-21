@@ -23,7 +23,6 @@ class ChatCell: UITableViewCell
         self.layer.shadowOffset = CGSize(width: 4.0, height: 8.0)
         
         self.layer.shadowRadius = 5
-        self.layer.shouldRasterize = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool)

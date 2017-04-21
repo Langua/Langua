@@ -11,13 +11,22 @@ import Firebase
 
 class MentorAvailableTableViewController: UITableViewController
 {
-    var mentorArr : [FIRDataSnapshot] = []
+    var inboxArr : [FIRDataSnapshot] = []
     var ref : FIRDatabaseReference!
     var currentRow = 0
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        if(Util._currentUserType == "Learner")
+        {
+            self.title = "Mentors"
+        }
+        else
+        {
+            self.title = "Learners"
+        }
         
         self.assignRow()
         
@@ -31,13 +40,13 @@ class MentorAvailableTableViewController: UITableViewController
     {
         switch(Util._currentCourseLanguage!)
         {
-        case "japanese":
+        case "Japanese":
             currentRow = 0
             break
-        case "french":
+        case "French":
             currentRow = 1
             break
-        case "spanish":
+        case "Spanish":
             currentRow = 2
             break
         default:
@@ -52,7 +61,7 @@ class MentorAvailableTableViewController: UITableViewController
             self.ref = FIRDatabase.database().reference()
             
             // refresh table data
-            self.mentorArr.removeAll(keepingCapacity: false)
+            self.inboxArr.removeAll(keepingCapacity: false)
             self.tableView.reloadData()
             
             self.configureDB()
@@ -61,19 +70,46 @@ class MentorAvailableTableViewController: UITableViewController
     
     func configureDB()
     {
-//        let mentorUpdate = ["/modules/courses/\(row)/mentors/\((currentUser?.uid)!)" : setMent]
-        
-        ref.child("modules").child("courses").child("\(self.currentRow)").child("mentors").observe(.childAdded) { (snapshot: FIRDataSnapshot)in
-            self.mentorArr.append(snapshot)
-            self.tableView.insertRows(at: [IndexPath(row: self.mentorArr.count-1, section: 0)], with: .automatic)
-        }
-        
-        ref.child("modules").child("courses").child("\(self.currentRow)").child("mentors").observe(.childChanged) { (snapshot: FIRDataSnapshot) in
-            
-            for i in (0...(self.mentorArr.count-1))
-            {
-                self.mentorArr[i] = snapshot
+        if(Util._currentUserType == "Learner")
+        {
+            ref.child("modules").child("courses").child("\(self.currentRow)").child("mentors").observe(.childAdded) { (snapshot: FIRDataSnapshot)in
+                if(Util._currentUserType == "Learner")
+                {
+                    self.inboxArr.append(snapshot)
+                    self.tableView.insertRows(at: [IndexPath(row: self.inboxArr.count-1, section: 0)], with: .automatic)
+                }
             }
+            
+            ref.child("modules").child("courses").child("\(self.currentRow)").child("mentors").observe(.childChanged) { (snapshot: FIRDataSnapshot) in
+                if(Util._currentUserType == "Learner")
+                {
+                    for i in (0...(self.inboxArr.count-1))
+                    {
+                        self.inboxArr[i] = snapshot
+                    }
+                }
+            }
+        }
+        else
+        {
+            ref.child("modules").child("courses").child("\(self.currentRow)").child("mentors").child("\((Util._currentUser?.uid)!)").child("inbox").observe(.childAdded) { (snapshot: FIRDataSnapshot)in
+                if(Util._currentUserType == "Mentor")
+                {
+                    self.inboxArr.append(snapshot)
+                    self.tableView.insertRows(at: [IndexPath(row: self.inboxArr.count-1, section: 0)], with: .automatic)
+                }
+            }
+            
+            ref.child("modules").child("courses").child("\(self.currentRow)").child("mentors").child("\((Util._currentUser?.uid)!)").child("inbox").observe(.childChanged) { (snapshot: FIRDataSnapshot) in
+                if(Util._currentUserType == "Mentor")
+                {
+                    for i in (0...(self.inboxArr.count-1))
+                    {
+                        self.inboxArr[i] = snapshot
+                    }
+                }
+            }
+
         }
     }
     
@@ -94,15 +130,52 @@ class MentorAvailableTableViewController: UITableViewController
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // #warning Incomplete implementation, return the number of rows
-        return self.mentorArr.count
+        return self.inboxArr.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mentorAvailableCell", for: indexPath) as! MentorAvailableCell
 
-        // Configure the cell...
-
+        let snap = inboxArr[indexPath.row]
+        let key = snap.key
+        let val = snap.value as! NSDictionary
+        
+        self.ref = FIRDatabase.database().reference()
+        
+        var name = ""
+        
+        if(Util._currentUserType == "Learner")
+        {
+            name = val["mentorname"] as! String
+        }
+        else
+        {
+            name = val["learnername"] as! String
+        }
+        
+        self.ref.child("user").child("\(key)").observe(.value, with: { (userSnap: FIRDataSnapshot) in
+            
+            let userVal = userSnap.value as! NSDictionary
+            
+            let online = userVal["online"] as! Bool
+            
+            if(online)
+            {
+                cell.avatarImageView.layer.borderColor = UIColor.myLightBambooGreen.cgColor
+                cell.statusLabel.text = "Online"
+                cell.statusLabel.textColor = UIColor.myLightBambooGreen
+            }
+            else
+            {
+                cell.avatarImageView.layer.borderColor = UIColor.myOuterSpaceBlack.cgColor
+                cell.statusLabel.text = "Offline"
+                cell.statusLabel.textColor = UIColor.myOuterSpaceBlack
+            }
+            
+            cell.userLabel.text = name
+        })
+        
         return cell
     }
     
@@ -110,6 +183,8 @@ class MentorAvailableTableViewController: UITableViewController
     {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.selectionStyle = .none
+        
+        self.performSegue(withIdentifier: "chatSegue", sender: indexPath)
     }
 
     /*
@@ -146,15 +221,22 @@ class MentorAvailableTableViewController: UITableViewController
         return true
     }
     */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if(segue.identifier == "chatSegue")
+        {
+            let indexPath = sender as! IndexPath
+            
+            let snap = self.inboxArr[indexPath.row]
+            
+            let dest = segue.destination as! ChatViewController
+            
+            dest.snap = snap
+            dest.currentRow = currentRow
+        }
     }
-    */
-
 }

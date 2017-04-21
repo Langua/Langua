@@ -12,12 +12,16 @@ class MentorAvailableCell: UITableViewCell
 {
     @IBOutlet weak var avatarImageView: UIImageView!
     
+    @IBOutlet weak var notificationView: UIView!
     @IBOutlet weak var userLabel: UILabel!
     
     @IBOutlet weak var statusLabel: UILabel!
     
     override func awakeFromNib()
     {
+        self.notificationView.layer.cornerRadius = self.notificationView.frame.width/2
+        self.notificationView.isHidden = true
+        
         super.awakeFromNib()
         self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.width/2
         
