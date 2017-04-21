@@ -4,9 +4,7 @@
 
 Language learning application that provides mentors, resources, and courses for learning clients.
 
-Time spent: **25** hours spent in total
-
-APIs Used: ...
+Time spent: **50** hours spent in total
 
 ## User Stories
 
@@ -15,10 +13,10 @@ The following **required (core)** functionality is completed:
 - [X] The current signed in user will be persisted across restarts
 - [X] User can choose multiple languages
 - [ ] User (if learner) can take part of a course, which they can continue at their pace
-- [ ] Learner can see available mentors
+- [X] Learner can see available mentors
 - [ ] Learner has multiple levels
 - [ ] Reviews for mentor
-- [ ] Chatting between Mentors & Learners
+- [X] Chatting between Mentors & Learners
 
 
 The following **optional** features are implemented:
@@ -34,7 +32,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [X] Firebase: Relational Database set up
+- [X] Firebase: Database set up
 - [ ] Storage for user profile picture
 
 
@@ -48,7 +46,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+School work cut into the time I wanted to put into this project, but for the most part I was able to get basic functionality going. Getting comfortable with the backend was the most challenging part. 
 
 
 
