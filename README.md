@@ -4,7 +4,7 @@
 
 Language learning application that provides mentors, resources, and courses for learning clients.
 
-Time spent: **50** hours spent in total
+Time spent: **60** hours spent in total
 
 ## User Stories
 
@@ -12,7 +12,7 @@ The following **required (core)** functionality is completed:
 - [X] User can sign in and be either/or Mentor/Learner
 - [X] The current signed in user will be persisted across restarts
 - [X] User can choose multiple languages
-- [ ] User (if learner) can take part of a course, which they can continue at their pace
+- [X] User (if learner) can take part of a course, which they can continue at their pace
 - [X] Learner can see available mentors
 - [ ] Learner has multiple levels
 - [ ] Reviews for mentor
