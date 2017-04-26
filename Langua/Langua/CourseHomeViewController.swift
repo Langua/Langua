@@ -179,14 +179,24 @@ class CourseHomeViewController: UIViewController, UITableViewDelegate, UITableVi
                 break
         }
         
+        cell.customTap = CustomTap(target: self, action: #selector(btnSelected(_:)))
+        
+        cell.customTap?.indexPath = indexPath
+        
+        cell.lessonBtn.addGestureRecognizer(cell.customTap!)
+        
         return cell
+    }
+    
+    func btnSelected(_ sender: CustomTap)
+    {
+        self.tableView(self.tableView, didSelectRowAt: sender.indexPath!)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let cell = tableView.cellForRow(at: indexPath)
-        
-        cell?.selectionStyle = .none
+        print("Selected")
+        self.performSegue(withIdentifier: "lessonSegue", sender: indexPath.row)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView)
@@ -232,15 +242,24 @@ class CourseHomeViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if(segue.identifier == "lessonSegue")
+        {
+            switch(Util._currentCourseLanguage!)
+            {
+            case "Spanish":
+                print("Spanish")
+            default:
+                let vc = segue.destination as! SpanishCourseViewController
+                
+                vc.currentLesson = sender as! Int
+                break
+            }
+        }
     }
-    */
 
 }

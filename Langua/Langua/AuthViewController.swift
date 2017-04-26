@@ -72,10 +72,6 @@ class AuthViewController: UIViewController
                     
                     if(self.user?.uid != nil && self.user?.email != nil)
                     {
-                        print(self.user?.uid)
-                        
-                        print(self.user?.email)
-                        
                         self.ref.child("user").child((self.user?.uid)!).observeSingleEvent(of: .value, with: { (snap: FIRDataSnapshot) in
 
                             if(snap.hasChild("displayName"))
@@ -89,7 +85,7 @@ class AuthViewController: UIViewController
                                 }
                                 else
                                 {
-                                    self.ref.child("user").child((self.user?.uid)!).updateChildValues(["email" : self.user!.email!, "displayName" :currentDisplayName])
+                                    self.ref.child("user").child((self.user?.uid)!).updateChildValues(["email" : self.user!.email!, "displayName" : currentDisplayName!])
 //                                    setValue(["email" : self.user?.email!, "displayName" : currentDisplayName])
                                     Util._currentUser = self.user
                                     self.performSegue(withIdentifier: "authSegue", sender: self.user)

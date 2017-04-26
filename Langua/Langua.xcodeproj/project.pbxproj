@@ -22,6 +22,8 @@
 		28C81E5B1E709DE0008B487B /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E561E708462008B487B /* Comfortaa-Bold.ttf */; };
 		28C81E5C1E709DE0008B487B /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E571E708462008B487B /* Comfortaa-Light.ttf */; };
 		28C81E5D1E709DE0008B487B /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28C81E581E708462008B487B /* Comfortaa-Regular.ttf */; };
+		28DC3AF61EABFE5F00CFBF3B /* SpanishCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC3AF51EABFE5F00CFBF3B /* SpanishCourseViewController.swift */; };
+		28DC3AF91EAC0AEB00CFBF3B /* AnswerChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC3AF81EAC0AEB00CFBF3B /* AnswerChoiceCell.swift */; };
 		28E61E521E834018000175F5 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E61E511E834018000175F5 /* CatalogViewController.swift */; };
 		28E61E551E83464A000175F5 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E61E541E83464A000175F5 /* CourseCell.swift */; };
 		28F50B1D1E77643C00FAFF6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28F50B1C1E77643C00FAFF6A /* GoogleService-Info.plist */; };
@@ -52,6 +54,8 @@
 		28C81E571E708462008B487B /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
 		28C81E581E708462008B487B /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
 		28C81E591E70935C008B487B /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		28DC3AF51EABFE5F00CFBF3B /* SpanishCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpanishCourseViewController.swift; sourceTree = "<group>"; };
+		28DC3AF81EAC0AEB00CFBF3B /* AnswerChoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerChoiceCell.swift; sourceTree = "<group>"; };
 		28E61E511E834018000175F5 /* CatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		28E61E541E83464A000175F5 /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		28F50B1C1E77643C00FAFF6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 		28C51F6C1EA3F68800948D6F /* Spanish Source */ = {
 			isa = PBXGroup;
 			children = (
+				28DC3AF51EABFE5F00CFBF3B /* SpanishCourseViewController.swift */,
+				28DC3AF81EAC0AEB00CFBF3B /* AnswerChoiceCell.swift */,
 			);
 			name = "Spanish Source";
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 			files = (
 				28C51F8A1EA6A9F900948D6F /* MentorAvailableTableViewController.swift in Sources */,
 				28E61E521E834018000175F5 /* CatalogViewController.swift in Sources */,
+				28DC3AF91EAC0AEB00CFBF3B /* AnswerChoiceCell.swift in Sources */,
 				28F50B551E8202B200FAFF6A /* MiscInfoViewController.swift in Sources */,
 				28F50B221E77698000FAFF6A /* menuController.swift in Sources */,
 				28E61E551E83464A000175F5 /* CourseCell.swift in Sources */,
@@ -355,6 +362,7 @@
 				287C9ADE1E887F2700845CDF /* CourseHomeViewController.swift in Sources */,
 				28F50B2A1E7A0AB500FAFF6A /* HomeViewController.swift in Sources */,
 				28C51F711EA3FD2600948D6F /* ChatCell.swift in Sources */,
+				28DC3AF61EABFE5F00CFBF3B /* SpanishCourseViewController.swift in Sources */,
 				28F50B281E7A03B200FAFF6A /* AuthViewController.swift in Sources */,
 				28BEFC0E1E930AE300EF9101 /* CourseLessonCell.swift in Sources */,
 				28C51F6F1EA3FD0D00948D6F /* ChatViewController.swift in Sources */,

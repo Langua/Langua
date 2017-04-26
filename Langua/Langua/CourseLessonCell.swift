@@ -8,12 +8,19 @@
 
 import UIKit
 
+class CustomTap : UITapGestureRecognizer
+{
+    var indexPath : IndexPath?
+}
+
 class CourseLessonCell: UITableViewCell
 {
 
     @IBOutlet weak var lessonBtn: UIButton!
     
     @IBOutlet weak var lessonLabel: UILabel!
+    
+    var customTap : CustomTap?
     
     override func awakeFromNib()
     {
