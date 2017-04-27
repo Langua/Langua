@@ -40,7 +40,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-### In Construction
+![languagif](https://cloud.githubusercontent.com/assets/11231583/25508765/5b3e8266-2b82-11e7-8bbe-1390a2f90aa2.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
